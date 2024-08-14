@@ -3,11 +3,17 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yourorg</groupId>
+    <groupId>com.equinix</groupId>
     <artifactId>rewrite-recipe-starter</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
-
+    <version>1.0.2-SNAPSHOT</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -88,10 +94,54 @@
             <version>6.1.7</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <version>6.1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <!-- Falcon -->
+
+        <dependency>
+            <groupId>com.equinix.falcon</groupId>
+            <artifactId>falcon-oas-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.equinix.falcon</groupId>
+            <artifactId>falcon-exception-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.equinix.falcon</groupId>
+            <artifactId>falcon-pagination-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.equinix.falcon</groupId>
+            <artifactId>falcon-restful-utils</artifactId>
+        </dependency>
+
+        <!-- Falcon -->
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.equinix.falcon</groupId>
+                <artifactId>falcon-dependencies</artifactId>
+                <version>6.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.openrewrite.recipe</groupId>
                 <artifactId>rewrite-recipe-bom</artifactId>
@@ -108,6 +158,8 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
 
     <build>
         <plugins>
